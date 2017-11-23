@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="设计模式," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -79,20 +79,17 @@
 
 
 
-<meta name="description" content="单例模式属于面试中经常被提及的设计模式了 下面对单例模式进行总结 单例模式有三特性：  单例类只能有一个实例 单例类必须自行创建自己的唯一的实例 单例类必须给所有其他对象提供这一实例">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="前段时间面试被问到python中深拷贝和浅拷贝的知识这里进行下总结，以便今后复习python中的深拷贝和浅拷贝和java里面的概念是一样的，所谓浅拷贝就是对引用的拷贝，所谓深拷贝就是对对象的资源的拷贝。首先，对赋值操作我们要有以下认识：  赋值是将一个对象的地址赋值给一个变量，让变量指向该地址（ 旧瓶装旧酒 ）。 修改不可变对象（str、tuple）需要开辟新的空间 修改可变对象（list等）不需">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式总结">
-<meta property="og:url" content="http://thiszyq.github.io/2017/10/27/单例模式总结/index.html">
+<meta property="og:title" content="谈谈python中的深拷贝和浅拷贝">
+<meta property="og:url" content="http://thiszyq.github.io/2017/11/23/谈谈python中的深拷贝和浅拷贝/index.html">
 <meta property="og:site_name" content="zyq&#39;s Blog">
-<meta property="og:description" content="单例模式属于面试中经常被提及的设计模式了 下面对单例模式进行总结 单例模式有三特性：  单例类只能有一个实例 单例类必须自行创建自己的唯一的实例 单例类必须给所有其他对象提供这一实例">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1637925-60cf9464d0d2cb16.gif?imageMogr2/auto-orient/strip">
-<meta property="og:image" content="http://img.blog.csdn.net/20161213113320688?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWlhbl9DU0RO/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-11-23T07:27:26.730Z">
+<meta property="og:description" content="前段时间面试被问到python中深拷贝和浅拷贝的知识这里进行下总结，以便今后复习python中的深拷贝和浅拷贝和java里面的概念是一样的，所谓浅拷贝就是对引用的拷贝，所谓深拷贝就是对对象的资源的拷贝。首先，对赋值操作我们要有以下认识：  赋值是将一个对象的地址赋值给一个变量，让变量指向该地址（ 旧瓶装旧酒 ）。 修改不可变对象（str、tuple）需要开辟新的空间 修改可变对象（list等）不需">
+<meta property="og:updated_time" content="2017-11-23T07:33:31.253Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单例模式总结">
-<meta name="twitter:description" content="单例模式属于面试中经常被提及的设计模式了 下面对单例模式进行总结 单例模式有三特性：  单例类只能有一个实例 单例类必须自行创建自己的唯一的实例 单例类必须给所有其他对象提供这一实例">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1637925-60cf9464d0d2cb16.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:title" content="谈谈python中的深拷贝和浅拷贝">
+<meta name="twitter:description" content="前段时间面试被问到python中深拷贝和浅拷贝的知识这里进行下总结，以便今后复习python中的深拷贝和浅拷贝和java里面的概念是一样的，所谓浅拷贝就是对引用的拷贝，所谓深拷贝就是对对象的资源的拷贝。首先，对赋值操作我们要有以下认识：  赋值是将一个对象的地址赋值给一个变量，让变量指向该地址（ 旧瓶装旧酒 ）。 修改不可变对象（str、tuple）需要开辟新的空间 修改可变对象（list等）不需">
 
 
 
@@ -122,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://thiszyq.github.io/2017/10/27/单例模式总结/"/>
+  <link rel="canonical" href="http://thiszyq.github.io/2017/11/23/谈谈python中的深拷贝和浅拷贝/"/>
 
 
 
 
 
-  <title>单例模式总结 | zyq's Blog</title>
+  <title>谈谈python中的深拷贝和浅拷贝 | zyq's Blog</title>
   
 
 
@@ -255,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thiszyq.github.io/2017/10/27/单例模式总结/">
+    <link itemprop="mainEntityOfPage" href="http://thiszyq.github.io/2017/11/23/谈谈python中的深拷贝和浅拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="thiszyq">
@@ -272,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">单例模式总结</h1>
+          <h1 class="post-title" itemprop="name headline">谈谈python中的深拷贝和浅拷贝</h1>
         
 
         <div class="post-meta">
@@ -284,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-27T11:28:08+08:00">
-                2017-10-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T15:30:27+08:00">
+                2017-11-23
               </time>
             
 
@@ -307,19 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习总结/" itemprop="url" rel="index">
-                    <span itemprop="name">学习总结</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习总结/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
+                  <a href="/categories/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
                   </a>
                 </span>
 
@@ -355,28 +341,29 @@
       
 
       
-        <p>单例模式属于面试中经常被提及的设计模式了</p>
-<p>下面对单例模式进行总结</p>
-<p>单例模式有三特性：</p>
+        <p>前段时间面试被问到<code>python</code>中深拷贝和浅拷贝的知识<br>这里进行下总结，以便今后复习<br><code>python</code>中的深拷贝和浅拷贝和<code>java</code>里面的概念是一样的，所谓浅拷贝就是对引用的拷贝，所谓深拷贝就是对对象的资源的拷贝。<br>首先，对<strong>赋值</strong>操作我们要有以下认识：</p>
+<ol>
+<li>赋值是将一个对象的地址赋值给一个变量，让变量指向该地址（ 旧瓶装旧酒 ）。</li>
+<li>修改不可变对象（<code>str</code>、<code>tuple</code>）需要开辟新的空间</li>
+<li>修改可变对象（<code>list</code>等）不需要开辟新的空间</li>
+</ol>
 <ul>
-<li>单例类只能有一个实例</li>
-<li>单例类必须自行创建自己的唯一的实例</li>
-<li>单例类必须给所有其他对象提供这一实例</li>
+<li><strong>浅拷贝</strong>仅仅复制了容器中元素的地址</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=[<span class="string">'hello'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=a[:]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</div><div class="line">[<span class="number">55792504</span>, <span class="number">6444104</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> b]</div><div class="line">[<span class="number">55792504</span>, <span class="number">6444104</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">0</span>]=<span class="string">'world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>].append(<span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</div><div class="line">[<span class="string">'world'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(b)</div><div class="line">[<span class="string">'hello'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p><img src="http://upload-images.jianshu.io/upload_images/1637925-60cf9464d0d2cb16.gif?imageMogr2/auto-orient/strip" alt="单例模式结构图"><br><img src="http://img.blog.csdn.net/20161213113320688?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWlhbl9DU0RO/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="单例模式"></p>
+<p>这里可以看出，未修改前，<code>a</code>和<code>b</code>中元素的地址都是相同的，不可变的<code>hello</code><br>和可变的<code>list</code>地址都一样，说明浅拷贝知识将容器内的元素的地址复制了一份。这可以通过修改后，<code>b</code>中字符串没改变，但是<code>list</code>元素随着<code>a</code>相应改变得到验证。</p>
 <blockquote>
-<p>单例Singleton在单例类的内部实现只生成一个实例，同时它提供一个静态的<code>getInstance</code>工厂方法，让客户可以访问他的唯一实例，为了防止在外部对其实例化，将其构造函数设计为<strong>私有</strong>，在单例类内部定义一个Singleton类型的静态对象，作为外部共享的唯一实例。</p>
+<p>浅拷贝是在另一块地址中创建一个新的变量或容器，但是容器内的元素的地址均是源对象的元素的地址的拷贝。也就是说新的容器中指向了旧的元素（ 新瓶装旧酒 ）。</p>
 </blockquote>
 <ul>
-<li>Java中final、static、内部静态类</li>
+<li><strong>深拷贝</strong>，完全拷贝了一个副本，容器内部元素地址都不一样</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=[<span class="string">'hello'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=deepcopy(a)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</div><div class="line">[<span class="number">55792504</span>, <span class="number">55645000</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> b]</div><div class="line">[<span class="number">55792504</span>, <span class="number">58338824</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">0</span>]=<span class="string">'world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>].append(<span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</div><div class="line">[<span class="string">'world'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(b)</div><div class="line">[<span class="string">'hello'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</div></pre></td></tr></table></figure>
+<p>这里可以看出，深拷贝后，<code>a</code>和<code>b</code>的地址以及<code>a</code>和<code>b</code>中的元素地址均不同，这是完全拷贝的一个副本，修改<code>a</code>后，发现<code>b</code>没有发生任何改变，因为<code>b</code>是一个完全的副本，元素地址与<code>a</code>均不同，<code>a</code>修改不影响<code>b</code>。</p>
 <blockquote>
-<p>静态内部类有两个优点：加强了类的封装性和提高了代码的可读性</p>
-<p>静态内部类的对象生成不依靠外部类的创建；静态内部类只能访问外部类的静态成员变量和成员方法</p>
+<p>深拷贝是在另一块地址中创建一个新的变量或容器，同时容器内的元素的地址也是新开辟的，仅仅是值相同而已，是完全的副本。也就是说（ 新瓶装新酒 ）。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 懒汉式，不支持多线程，没有加锁</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySingleton singleton;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span> (singleton==<span class="keyword">null</span>)</div><div class="line">            singleton=<span class="keyword">new</span> LazySingleton();</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 线程安全的懒汉式，能够在多线程中很好的工作</div><div class="line"> * 但是，效率很低，大部分情况下不需要同步</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingletonSafty</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySingletonSafty singleton;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingletonSafty</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingletonSafty <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span> (singleton==<span class="keyword">null</span>)</div><div class="line">            singleton=<span class="keyword">new</span> LazySingletonSafty();</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 饿汉式</div><div class="line"> * 多线程安全，类加载时候就初始化不能实现延迟加载，浪费内存，没有加锁，效率会比较高。</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungerSingleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HungerSingleton singleton=<span class="keyword">new</span> HungerSingleton();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungerSingleton</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungerSingleton <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 懒汉式单例类线程安全可可能有问题，性能会受到影响</div><div class="line"> * 饿汉式不能实现延迟加载，不管将来用不用始终占据内存</div><div class="line"> * 内部类的实现方式可以很好的解决上面的缺点</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassSingleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span></span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> InnerClassSingleton SINGLETON=<span class="keyword">new</span> InnerClassSingleton();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">InnerClassSingleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> InnerClassSingleton <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> SingletonHolder.SINGLETON;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://www.jianshu.com/p/d8bf5d08a147#" target="_blank" rel="external">单例模式具体代码实现–不错</a></p>
 
       
     </div>
@@ -394,7 +381,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -407,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/27/自己实现一个HashMap/" rel="next" title="自己实现一个HashMap">
-                <i class="fa fa-chevron-left"></i> 自己实现一个HashMap
+              <a href="/2017/10/27/单例模式总结/" rel="next" title="单例模式总结">
+                <i class="fa fa-chevron-left"></i> 单例模式总结
               </a>
             
           </div>
@@ -416,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/23/谈谈python中的深拷贝和浅拷贝/" rel="prev" title="谈谈python中的深拷贝和浅拷贝">
-                谈谈python中的深拷贝和浅拷贝 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

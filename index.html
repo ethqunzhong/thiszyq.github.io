@@ -251,6 +251,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thiszyq.github.io/2017/11/23/谈谈python中的深拷贝和浅拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="thiszyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/16517186?v=4&s=400&u=c41f5494eb337afacbb95e99e50e615fc163b51b">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zyq's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/23/谈谈python中的深拷贝和浅拷贝/" itemprop="url">谈谈python中的深拷贝和浅拷贝</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T15:30:27+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>前段时间面试被问到<code>python</code>中深拷贝和浅拷贝的知识<br>这里进行下总结，以便今后复习<br><code>python</code>中的深拷贝和浅拷贝和<code>java</code>里面的概念是一样的，所谓浅拷贝就是对引用的拷贝，所谓深拷贝就是对对象的资源的拷贝。<br>首先，对<strong>赋值</strong>操作我们要有以下认识：</p>
+<ol>
+<li>赋值是将一个对象的地址赋值给一个变量，让变量指向该地址（ 旧瓶装旧酒 ）。</li>
+<li>修改不可变对象（<code>str</code>、<code>tuple</code>）需要开辟新的空间</li>
+<li>修改可变对象（<code>list</code>等）不需要开辟新的空间</li>
+</ol>
+<ul>
+<li><strong>浅拷贝</strong>仅仅复制了容器中元素的地址</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=[<span class="string">'hello'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=a[:]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</div><div class="line">[<span class="number">55792504</span>, <span class="number">6444104</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> b]</div><div class="line">[<span class="number">55792504</span>, <span class="number">6444104</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">0</span>]=<span class="string">'world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>].append(<span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</div><div class="line">[<span class="string">'world'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(b)</div><div class="line">[<span class="string">'hello'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/23/谈谈python中的深拷贝和浅拷贝/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thiszyq.github.io/2017/10/27/单例模式总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -777,7 +932,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -788,7 +943,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -799,7 +954,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
