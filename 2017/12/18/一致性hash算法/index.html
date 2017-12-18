@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="一致性hash算法"><meta name="keywords" content="分布式系统"><meta name="author" content="thiszyq,undefined"><meta name="copyright" content="thiszyq"><title>一致性hash算法 | zyq's Blog</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.3"><script>var GLOBAL = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  localSearch: undefined
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">1.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一致性哈希算法简介"><span class="toc-number">2.</span> <span class="toc-text">一致性哈希算法简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用一致性哈希算法解决上述问题"><span class="toc-number">3.</span> <span class="toc-text">使用一致性哈希算法解决上述问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">thiszyq</div><div class="author-info__description text-center">stay hungry, keep moving.</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">7</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">8</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">6</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zyq's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">一致性hash算法</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-12-18</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/System-Design/">System Design</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><p><strong>一致性Hash算法</strong></p>
+<p>1）问题描述</p>
+<p>分布式常常用Hash算法来分布数据，当数据节点不变化时是非常好的，但当数据节点有增加或减少时，由于需要调整Hash算法里的模，导致所有数据得重新按照新的模分布到各个节点中去。如果数据量庞大，这样的工作常常是很难完成的。一致性Hash算法是基于Hash算法的优化，通过一些映射规则解决以上问题</p>
+<p>2）算法本身</p>
+<p>对于一致性Hash算法本身我也不做完整的阐述，有篇blog<a href="http://blog.csdn.net/sparkliang/archive/2010/02/02/5279393.aspx" target="_blank" rel="external">《一致性hash算法 - consistent hashing》</a> 描述这个算法非常到位，我就不重复造轮子了。</p>
+<p>实际上，在其他设计和开发领域我们也可以借鉴一致性Hash的思路，当一个映射或规则导致有难以维护的问题时，可以考虑更一步抽象这些映射或规则，通过规则的变化使得最终数据的不变。一致性hash实际就是把以前点映射改为区段映射，使得数据节点变更后其他数据节点变动尽可能小。这个思路在操作系统对于存储问题上体现很多，比如操作系统为了更优化地利用存储空间，区分了段、页等不同纬度，加了很多映射规则，目的就是要通过灵活的规则避免物理变动的代价</p>
+<p>3）算法实现</p>
+<p>一致性Hash算法本身比较简单，不过可以根据实际情况有很多改进的版本，其目的无非是两点：</p>
+<ul>
+<li>节点变动后其他节点受影响尽可能小</li>
+<li>节点变动后数据重新分配尽可能均衡</li>
+</ul>
+<p>实现这个算法就技术本身来说没多少难度和工作量，需要做的是建立起你所设计的映射关系，无需借助什么框架或工具，sourceforge上倒是有个项目<a href="http://sourceforge.net/projects/libconhash/" target="_blank" rel="external">libconhash</a> ，可以参考一下</p>
+<p>以上两个算法在我看来就算从不涉及算法的开发人员也需要了解的，算法其实就是一个策略，而在分布式环境常常需要我们设计一个策略来解决很多无法通过单纯的技术搞定的难题，学习这些算法可以提供我们一些思路。</p>
+<a id="more"></a>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>这里我先描述一个极其简单的业务场景：用4台Cache服务器缓存所有Object。</p>
+<p>那么我将如何把一个Object映射至对应的Cache服务器呢？最简单的方法设置缓存规则：<code>object.hashCode() % 4</code></p>
+<table>
+<thead>
+<tr>
+<th>Cache 0：object.hashCode() % 4 == 0</th>
+<th style="text-align:left">Cache 1:object.hashCode() % 4 == 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache 2:object.hashCode() % 4 == 2</td>
+<td style="text-align:left">Cache 3:object.hashCode() % 4 == 3</td>
+</tr>
+</tbody>
+</table>
+<p>看起来一切正常，考虑下面两种情况：</p>
+<p>一：由于Cache3硬件损坏，所有Cache3上的缓存都失效了，需要把Cache3移除。</p>
+<p>二：由于负载已经无法承担业务增涨，决定添加一台Cache服务器。</p>
+<h3 id="一致性哈希算法简介"><a href="#一致性哈希算法简介" class="headerlink" title="一致性哈希算法简介"></a>一致性哈希算法简介</h3><p>一致性哈希算法是在哈希算法基础上，提出的在动态变化的Cache环境中，哈希算法应该满足的4个适应条件。</p>
+<p><strong>平衡性(Balance)</strong></p>
+<p>平衡性是指Hash的结果能够尽可能分布均匀，充分利用所有缓存空间。</p>
+<p><strong>单调性(Monotonicity)</strong></p>
+<p>单调性是指如果已经有一些内容通过哈希分派到了相应的缓冲中，又有新的缓冲加入到系统中。哈希的结果应能够保证原有已分配的内容可以被映射到新的缓冲中去，而不会被映射到旧的缓冲集合中的其他缓冲区。</p>
+<p><strong>分散性(Spread)</strong></p>
+<p>分散性定义了分布式环境中，不同终端通过Hash过程将内容映射至缓存上时，因可见缓存不同，Hash结果不一致，相同的内容被映射至不同的缓冲区。</p>
+<p><strong>负载(Load)</strong></p>
+<p>负载是对分散性要求的另一个纬度。既然不同的终端可以将相同的内容映射到不同的缓冲区中，那么对于一个特定的缓冲区而言，也可能被不同的用户映射为不同的内容。</p>
+<h3 id="使用一致性哈希算法解决上述问题"><a href="#使用一致性哈希算法解决上述问题" class="headerlink" title="使用一致性哈希算法解决上述问题"></a>使用一致性哈希算法解决上述问题</h3><pre><code>一致性哈希算法采用一种新的方式来解决问题，不再仅仅依赖object.hashCode()本身，而且将Cache的配置也进行哈希运算。具体步骤如下：
+</code></pre><ol>
+<li>首先求出每个<code>Cache</code>的哈希值，并将其配置到一个<code>0~2^32</code>的圆环区间上。</li>
+<li>使用同样的方法求出需要存储对象的哈希值，也将其配置到这个圆环上。</li>
+<li>从数据映射到的位置开始顺时针查找，将数据保存到找到的第一个<code>Cache</code>节点上。如果超过<code>2^32</code>仍然找不到<code>Cache</code>节点，就会保存到第一个<code>Cache</code>节点上。</li>
+</ol>
+<p>​                               <img src="http://7xsud5.com2.z0.glb.clouddn.com/16-4-25/72428378.jpg" alt=""></p>
+<ul>
+<li><strong>新增Cache服务器</strong></li>
+</ul>
+<p>假设在这个环形哈希空间中，Cache5被映射在Cache3和Cache4之间，那么受影响的将仅是沿Cache5逆时针遍历直到下一个Cache（Cache3）之间的对象（它们本来映射到Cache4上）。</p>
+<p>​                           <img src="http://7xsud5.com2.z0.glb.clouddn.com/16-4-25/79790889.jpg" alt=""></p>
+<ul>
+<li><strong>移除Cache服务器</strong></li>
+</ul>
+<p>假设在这个环形哈希空间中，Cache3被移除，那么受影响的将仅是沿Cache3逆时针遍历直到下一个Cache（Cache2）之间的对象（它们本来映射到Cache3上）。</p>
+<p>​                       <img src="http://7xsud5.com2.z0.glb.clouddn.com/16-4-25/532017.jpg" alt=""></p>
+<ul>
+<li><strong>虚拟Cache服务器</strong></li>
+</ul>
+<p>​    考虑到哈希算法并不是保证绝对的平衡，尤其Cache较少的话，对象并不能被均匀的映射到 Cache上。为了解决这种情况,Consistent Hashing引入了“虚拟节点”的概念： “虚拟节点”是实际节点在环形空间的复制品，一个实际节点对应了若干个“虚拟节点”，这个对应个数也成为“复制个数”，“虚拟节点”在哈希空间中以哈希值排列。仍以4台Cache服务器为例，在下图中看到，引入虚拟节点，并设置“复制个数”为2后，共有8个“虚拟节点”分部在环形区域上，缓解了映射不均的情况。</p>
+<p>​                             <img src="http://7xsud5.com2.z0.glb.clouddn.com/16-4-25/94331744.jpg" alt=""></p>
+<p>​    引入了“虚拟节点”后，映射关系就从【对象—&gt;Cache服务器】转换成了【对象—&gt;虚拟节点—&gt; Cache服务器】。查询对象所在Cache服务器的映射关系如下图所示。</p>
+<p>​                     <img src="http://7xsud5.com2.z0.glb.clouddn.com/16-4-25/38377583.jpg" alt=""></p>
+<ul>
+<li><strong>总结</strong></li>
+</ul>
+<p>在我们的web开发应用中的分布式缓存系统里哈希算法承担着系统架构上的关键点。</p>
+<p>使用分布更合理的算法可以使得多个服务节点间的负载相对均衡，可以最大程度的避免资源的浪费以及服务器过载。</p>
+<p>使用一致性哈希算法，可以最大程度的降低服务硬件环境变化带来的数据迁移代价和风险。</p>
+<p>使用更合理的配置策略和算法可以使分布式缓存系统更加高效稳定的为我们整体的应用服务。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="http://blog.csdn.net/x15594/article/details/6270242" target="_blank" rel="external">一致性hash算法</a></p>
+<p><a href="http://blog.jobbole.com/47023/" target="_blank" rel="external">一致性hash在搜索引擎的应用</a></p>
+<p><a href="http://blog.csdn.net/cutesource/article/details/5822459" target="_blank" rel="external">分布式设计与开发（三）——高一致性服务ZooKeeper</a></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">thiszyq</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://thiszyq.github.io/2017/12/18/一致性hash算法/">http://thiszyq.github.io/2017/12/18/一致性hash算法/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明来自 <a href="http://thiszyq.github.io" target="_blank">zyq's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/分布式系统/">分布式系统</a></div></article><nav id="pagination"><div class="next-post pull-right"><a href="/2017/12/18/初探分布式系统/"><span>初探分布式系统</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2017 By thiszyq</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.3"></script><script src="/js/fancybox.js?version=1.3"></script><script src="/js/sidebar.js?version=1.3"></script><script src="/js/copy.js?version=1.3"></script><script src="/js/fireworks.js?version=1.3"></script><script src="/js/transition.js?version=1.3"></script><script src="/js/scroll.js?version=1.3"></script><script src="/js/head.js?version=1.3"></script></body></html>
