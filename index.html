@@ -10,6 +10,27 @@
 } </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">thiszyq</div><div class="author-info__description text-center">stay hungry, keep moving.</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">12</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">8</span></a></div></div></div><nav class="no-bg" id="nav" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zyq's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="site-info"><div id="site-title">zyq's Blog</div><div id="site-sub-title"></div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item"><a class="article-title" href="/2018/01/03/vim学习总结/">vim学习总结</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"></div><a class="more" href="/2018/01/03/vim学习总结/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2018/01/03/some-tips-of-macos/">some tips of macos</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"><h2 id="Mac-OS-终端打开文件夹"><a href="#Mac-OS-终端打开文件夹" class="headerlink" title="Mac OS 终端打开文件夹"></a>Mac OS 终端打开文件夹</h2><p><code>open .</code> 打开当前路径所在的文件夹</p>
 <p>当然还可以打开具体的路径，例如<code>open /usr/bin/</code></p>
 <h2 id="快速删除命令"><a href="#快速删除命令" class="headerlink" title="快速删除命令"></a>快速删除命令</h2><p>快捷键<code>control + u</code> 或者 <code>control + l</code>清屏</p>
+<h2 id="zsh中快速目录跳转"><a href="#zsh中快速目录跳转" class="headerlink" title="zsh中快速目录跳转"></a>zsh中快速目录跳转</h2><p>无需cd<code>..</code>表示后退一级目录<code>../..或者...</code>表示后退两级目录以此类推</p>
+<p>输入d，将列出当前 session 访问过的所有目录，再按提示的数字即可进入相应目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">0	~</div><div class="line">1	~/Documents/code</div><div class="line">2	~/Documents</div><div class="line">3	~/Documents/code/test1</div><div class="line">4	~/Documents/code/test</div><div class="line">5	~/Documents/code/wechat_jump_game</div><div class="line">6	/Users</div><div class="line">7	/</div></pre></td></tr></table></figure>
+<h3 id="autojump–按权重直达目录"><a href="#autojump–按权重直达目录" class="headerlink" title="autojump–按权重直达目录"></a>autojump–按权重直达目录</h3><p><strong>使用：</strong> <code>brew install autojump</code></p>
+<p>在<code>~/.zshrc</code>中添加<code>[ -f /usr/local/etc/profile.d/autojump.sh ] &amp;&amp; . /usr/local/etc/profile.d/autojump.sh</code></p>
+<p><code>source ~/.zshrc</code></p>
+<p><strong>基本原理：</strong>autojump的工作方式很简单，它会在你每次启动命令时记录你当前位置，并把它添加进它自身的数据库中。这样，某些目录比其它一些目录添加的次数多，这些目录一般就代表你最重要的目录，而它们的“权重”也会增大。</p>
+<p><strong>用法：</strong></p>
+<p><a href="https://github.com/wting/autojump" target="_blank" rel="external">autojump官网使用文档</a></p>
+<p><code>j  foo</code>                      跳转到数据库中路径包含foo的目录，支持tab补全</p>
+<p><code>jc bar</code>                   跳转到当前目录下的子目录</p>
+<p><code>jo dirname</code>                用文件管理器打开dirname目录</p>
+<p><code>jco child-dir</code>          Opening a file manager to a child directory</p>
+<p><code>j</code>                       进入当前权重最高的目录    </p>
+<p><code>j --stat</code>               查看当前权重</p>
+<p><code>j -a [dir]</code>                访问目录数据库，并修改它的内容</p>
+<p><code>j -i [weight]</code>          增加当前目录权重</p>
+<p><code>j -d [weight]</code>          减少当前目录权重    </p>
+<p><code>j -s</code>                     跟踪所有改变，显示数据库中的统计数据</p>
+<p><code>j --purge</code>               命令将会把不再存在的目录从数据库中移除</p>
+<h2 id="通配符搜索"><a href="#通配符搜索" class="headerlink" title="通配符搜索"></a>通配符搜索</h2><p><code>ls *.png</code>查找当前目录下所有 png 文件，<code>ls **/*.png</code>递归查找</p>
 <h2 id="终端基本操作"><a href="#终端基本操作" class="headerlink" title="终端基本操作"></a>终端基本操作</h2><h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><table>
 <thead>
 <tr>
