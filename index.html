@@ -7,7 +7,9 @@
     noSupport: '浏览器不支持'
   },
   localSearch: undefined
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">thiszyq</div><div class="author-info__description text-center">stay hungry, keep moving.</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">12</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">8</span></a></div></div></div><nav class="no-bg" id="nav" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zyq's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="site-info"><div id="site-title">zyq's Blog</div><div id="site-sub-title"></div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item"><a class="article-title" href="/2018/01/03/vim学习总结/">vim学习总结</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"></div><a class="more" href="/2018/01/03/vim学习总结/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2018/01/03/some-tips-of-macos/">some tips of macos</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"><h2 id="Mac-OS-终端打开文件夹"><a href="#Mac-OS-终端打开文件夹" class="headerlink" title="Mac OS 终端打开文件夹"></a>Mac OS 终端打开文件夹</h2><p><code>open .</code> 打开当前路径所在的文件夹</p>
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">thiszyq</div><div class="author-info__description text-center">stay hungry, keep moving.</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">12</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">8</span></a></div></div></div><nav class="no-bg" id="nav" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zyq's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="site-info"><div id="site-title">zyq's Blog</div><div id="site-sub-title"></div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item"><a class="article-title" href="/2018/01/03/vim学习总结/">vim学习总结</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>Vim（Vi[Improved]）编辑器是功能强大的跨平台文本文件编辑工具，继承自Unix系统的Vi编辑器，支持Linux/Mac OS X/Windows系统，利用它可以建立、修改文本文件。进入Vim编辑程序，可以在终端输入下面的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$vim [filename]</div></pre></td></tr></table></figure>
+<p>其中<code>filename</code>是要编辑器的文件的路径名。如果文件不存在，它将为你建立一个新文件。Vim编辑程序有三种操作模式，分别称为 <strong>编辑模式</strong>、<strong>插入模式</strong> 和 <strong>命令模式</strong>，当运行Vim时，首先进入编辑模式。</p></div><a class="more" href="/2018/01/03/vim学习总结/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2018/01/03/some-tips-of-macos/">some tips of macos</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"><h2 id="Mac-OS-终端打开文件夹"><a href="#Mac-OS-终端打开文件夹" class="headerlink" title="Mac OS 终端打开文件夹"></a>Mac OS 终端打开文件夹</h2><p><code>open .</code> 打开当前路径所在的文件夹</p>
 <p>当然还可以打开具体的路径，例如<code>open /usr/bin/</code></p>
 <h2 id="快速删除命令"><a href="#快速删除命令" class="headerlink" title="快速删除命令"></a>快速删除命令</h2><p>快捷键<code>control + u</code> 或者 <code>control + l</code>清屏</p>
 <h2 id="zsh中快速目录跳转"><a href="#zsh中快速目录跳转" class="headerlink" title="zsh中快速目录跳转"></a>zsh中快速目录跳转</h2><p>无需cd<code>..</code>表示后退一级目录<code>../..或者...</code>表示后退两级目录以此类推</p>
@@ -29,64 +31,7 @@
 <p><code>j -i [weight]</code>          增加当前目录权重</p>
 <p><code>j -d [weight]</code>          减少当前目录权重    </p>
 <p><code>j -s</code>                     跟踪所有改变，显示数据库中的统计数据</p>
-<p><code>j --purge</code>               命令将会把不再存在的目录从数据库中移除</p>
-<h2 id="通配符搜索"><a href="#通配符搜索" class="headerlink" title="通配符搜索"></a>通配符搜索</h2><p><code>ls *.png</code>查找当前目录下所有 png 文件，<code>ls **/*.png</code>递归查找</p>
-<h2 id="终端基本操作"><a href="#终端基本操作" class="headerlink" title="终端基本操作"></a>终端基本操作</h2><h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">命令名</th>
-<th style="text-align:center">功能描述</th>
-<th style="text-align:center">使用举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">uname</td>
-<td style="text-align:center">显示操作系统相关信息</td>
-<td style="text-align:center">uname -a</td>
-</tr>
-<tr>
-<td style="text-align:center">clear</td>
-<td style="text-align:center">清除屏幕或窗口内容</td>
-<td style="text-align:center">clear</td>
-</tr>
-<tr>
-<td style="text-align:center">env</td>
-<td style="text-align:center">显示当前所有设置过的环境变量</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">who</td>
-<td style="text-align:center">列出当前登录的所有用户</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">whoami</td>
-<td style="text-align:center">显示当前正在进行操作的用户名</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">tty</td>
-<td style="text-align:center">显示终端或者伪终端的名称</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">du</td>
-<td style="text-align:center">查询磁盘使用情况</td>
-<td style="text-align:center">du -k subdir</td>
-</tr>
-<tr>
-<td style="text-align:center">df</td>
-<td style="text-align:center">显示文件系统的总空间和可用空间</td>
-<td style="text-align:center">df /tmp</td>
-</tr>
-<tr>
-<td style="text-align:center">w</td>
-<td style="text-align:center">显示当前系统活动的总信息</td>
-<td style="text-align:center">w</td>
-</tr>
-</tbody>
-</table></div><a class="more" href="/2018/01/03/some-tips-of-macos/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2018/01/03/平时配置遇坑解决汇总/">平时配置遇坑解决汇总</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"><h2 id="编程环境配置问题"><a href="#编程环境配置问题" class="headerlink" title="编程环境配置问题"></a>编程环境配置问题</h2><h3 id="macos安装python3"><a href="#macos安装python3" class="headerlink" title="macos安装python3"></a>macos安装python3</h3><p><strong>问题描述</strong>：使用 <a href="https://stringpiggy.hpd.io/mac-osx-python3-dual-install/" target="_blank" rel="external">MAC OSX 正確地同時安裝 PYTHON 2.7 和 PYTHON3</a>来进行安装的时候遇到了 在usr/local/安装python3时候报出权限问题<code>The formula built, but is not symlinked into /usr/local</code></p>
+<p><code>j --purge</code>               命令将会把不再存在的目录从数据库中移除</p></div><a class="more" href="/2018/01/03/some-tips-of-macos/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2018/01/03/平时配置遇坑解决汇总/">平时配置遇坑解决汇总</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"><h2 id="编程环境配置问题"><a href="#编程环境配置问题" class="headerlink" title="编程环境配置问题"></a>编程环境配置问题</h2><h3 id="macos安装python3"><a href="#macos安装python3" class="headerlink" title="macos安装python3"></a>macos安装python3</h3><p><strong>问题描述</strong>：使用 <a href="https://stringpiggy.hpd.io/mac-osx-python3-dual-install/" target="_blank" rel="external">MAC OSX 正確地同時安裝 PYTHON 2.7 和 PYTHON3</a>来进行安装的时候遇到了 在usr/local/安装python3时候报出权限问题<code>The formula built, but is not symlinked into /usr/local</code></p>
 <p><strong>解决结果</strong>：由于iterm2 中采用的是zsh进行配置的，需要将之前bash profile中的配置加入到.zshrc中,具体的是<code>export PATH=$HOME/bin:/usr/local/bin:$PATH</code></p></div><a class="more" href="/2018/01/03/平时配置遇坑解决汇总/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2018/01/03/shell编程入门/">shell编程入门</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-01-03</time><div class="content"><h2 id="什么是Shell脚本"><a href="#什么是Shell脚本" class="headerlink" title="什么是Shell脚本"></a>什么是Shell脚本</h2><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>看个例子吧：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">cd ~</div><div class="line">mkdir shell_tut</div><div class="line">cd shell_tut</div><div class="line"></div><div class="line">for ((i=0; i&lt;10; i++)); do</div><div class="line">	touch test_$i.txt</div><div class="line">done</div></pre></td></tr></table></figure>
 <h3 id="示例解释"><a href="#示例解释" class="headerlink" title="示例解释"></a>示例解释</h3><ul>
