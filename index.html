@@ -50,24 +50,22 @@
 <h3 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h3><p>当前主流的操作系统都支持shell编程，本文档所述的shell编程是指Linux下的shell，讲的基本都是POSIX标准下的功能，所以，也适用于Unix及BSD（如Mac OS）。</p>
 <h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>Linux默认安装就带了shell解释器。</p>
 <h4 id="Mac-OS"><a href="#Mac-OS" class="headerlink" title="Mac OS"></a>Mac OS</h4><p>Mac OS不仅带了sh、bash这两个最基础的解释器，还内置了ksh、csh、zsh等不常用的解释器。</p></div><a class="more" href="/2018/01/03/shell编程入门/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2017/12/18/读google三篇论文小记/">读google三篇论文小记</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-12-18</time><div class="content"><h2 id="Google-File-System"><a href="#Google-File-System" class="headerlink" title="Google File System"></a>Google File System</h2><p>​    google file system是谷歌分布式存储系统的基石，它是一个面向大规模数据密集型应用的、可伸缩的分布式文件系统也是谷歌集群技术的核心所在。GFS构建于廉价的普通硬件设备上，但是依旧提供灾难冗余机制，为大量客户机提供高性能的服务。该系统围绕容错、可伸缩性、数据纯属、集群存储等方面进行设计。</p>
-<p><img src="http://dl2.iteye.com/upload/attachment/0109/4198/64753821-4eec-3b90-8452-ea2ef11f0909.jpg" alt="google Architecture"></p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0109/4198/64753821-4eec-3b90-8452-ea2ef11f0909.jpg" alt="google Architecture"> </p>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>GFS与传统的分布式文件系统设计思路不完全相同主要有以下几点：</p>
 <ul>
-<li><strong>组件失效被认为是常态事件</strong></li>
-</ul>
-<p>​    GFS系统是由大量廉价硬件设备组装而成，且同时被大量客户机访问。这导致在给定时间内都有可能发生某些组件无法工作，某些组件无法从失效状态中恢复过来，这期间可能遇到一系列硬件、软件引发的问题。因此，持续的监控、错误侦测、灾难冗余以及自动恢复的机制必须集成在 GFS 中。</p>
-<ul>
-<li><strong>以通常标准衡量，文件体积巨大</strong></li>
-</ul>
-<p>​    当我们经常需要处理快速增长的、并且由数亿个对象构成的、数以 TB 的数据 集时，采用管理数亿个 KB 大小的小文件的方式是非常不明智的，尽管有些文件系统支持这样的管理方式。 因此，设计的假设条件和参数，比如 I/O 操作和 Block 的尺寸都需要重新考虑。    </p>
-<ul>
-<li><strong>文件的修改采用文件尾部追加数据，而不是覆盖原有数据的方式</strong></li>
-</ul>
-<p>​    对文件的随机写 入操作在实际中几乎不存在。一旦写完之后，对文件的操作就只有读，而且通常是按顺序读。大量的数据符 合这些特性，比如：数据分析程序扫描的超大的数据集；正在运行的应用程序生成的连续的数据流；存档的 数据；由一台机器生成、另外一台机器处理的中间数据，这些中间数据的处理可能是同时进行的、也可能是 后续才处理的。对于这种针对海量文件的访问模式，客户端对数据块缓存是没有意义的，数据的追加操作是 性能优化和原子性保证的主要考量因素。</p>
-<ul>
-<li><strong>应用程序和文件系统API的协同设计提高了整个系统的灵活性</strong></li>
-</ul>
-<p>​    比如，放松了对 GFS 一致 性模型的要求，这样就减轻了文件系统对应用程序的苛刻要求，大大简化了 GFS 的设计。我们引入了原子性 的记录追加操作，从而保证多个客户端能够同时进行追加操作，不需要额外的同步操作来保证数据的一致性。 本文后面还有对这些问题的细节的详细讨论。</p></div><a class="more" href="/2017/12/18/读google三篇论文小记/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2017/12/18/一致性hash算法/">一致性hash算法</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-12-18</time><div class="content"><p><strong>一致性Hash算法</strong></p>
+<li><p><strong>组件失效被认为是常态事件</strong></p>
+<p>​GFS系统是由大量廉价硬件设备组装而成，且同时被大量客户机访问。这导致在给定时间内都有可能发生某些组件无法工作，某些组件无法从失效状态中恢复过来，这期间可能遇到一系列硬件、软件引发的问题。因此，持续的监控、错误侦测、灾难冗余以及自动恢复的机制必须集成在 GFS 中。</p>
+</li>
+<li><p><strong>以通常标准衡量，文件体积巨大</strong></p>
+<p>​当我们经常需要处理快速增长的、并且由数亿个对象构成的、数以 TB 的数据 集时，采用管理数亿个 KB 大小的小文件的方式是非常不明智的，尽管有些文件系统支持这样的管理方式。 因此，设计的假设条件和参数，比如 I/O 操作和 Block 的尺寸都需要重新考虑。    </p>
+</li>
+<li><p><strong>文件的修改采用文件尾部追加数据，而不是覆盖原有数据的方式</strong></p>
+<p>​对文件的随机写 入操作在实际中几乎不存在。一旦写完之后，对文件的操作就只有读，而且通常是按顺序读。大量的数据符 合这些特性，比如：数据分析程序扫描的超大的数据集；正在运行的应用程序生成的连续的数据流；存档的 数据；由一台机器生成、另外一台机器处理的中间数据，这些中间数据的处理可能是同时进行的、也可能是 后续才处理的。对于这种针对海量文件的访问模式，客户端对数据块缓存是没有意义的，数据的追加操作是 性能优化和原子性保证的主要考量因素。</p>
+</li>
+<li><p><strong>应用程序和文件系统API的协同设计提高了整个系统的灵活性</strong></p>
+<p>​比如，放松了对 GFS 一致 性模型的要求，这样就减轻了文件系统对应用程序的苛刻要求，大大简化了 GFS 的设计。我们引入了原子性 的记录追加操作，从而保证多个客户端能够同时进行追加操作，不需要额外的同步操作来保证数据的一致性。 本文后面还有对这些问题的细节的详细讨论。</p>
+</li>
+</ul></div><a class="more" href="/2017/12/18/读google三篇论文小记/#more">阅读更多</a><hr></div><div class="recent-post-item"><a class="article-title" href="/2017/12/18/一致性hash算法/">一致性hash算法</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-12-18</time><div class="content"><p><strong>一致性Hash算法</strong></p>
 <p>1）问题描述</p>
 <p>分布式常常用Hash算法来分布数据，当数据节点不变化时是非常好的，但当数据节点有增加或减少时，由于需要调整Hash算法里的模，导致所有数据得重新按照新的模分布到各个节点中去。如果数据量庞大，这样的工作常常是很难完成的。一致性Hash算法是基于Hash算法的优化，通过一些映射规则解决以上问题</p>
 <p>2）算法本身</p>
